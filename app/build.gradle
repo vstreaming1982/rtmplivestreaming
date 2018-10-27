@@ -1,0 +1,34 @@
+apply plugin: 'com.android.application'
+
+android {
+	signingConfigs {
+		release {
+			keyAlias 'sergey'
+			keyPassword 'sergey'
+			storeFile file('E:/Work/KeyStore/KeyStore_Sergey.jks')
+			storePassword 'sergey'
+		}
+	}
+	compileSdkVersion 17
+	buildToolsVersion '27.0.3'
+	defaultConfig {
+		applicationId "com.livestream.rtmpsend"
+		minSdkVersion 14
+		targetSdkVersion 17
+	}
+	buildTypes {
+		release {
+			minifyEnabled true
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+			proguardFile 'E:/Project/LibreStreaming/LiveStream/LiveStream/app/proguard-rules.pro'
+			signingConfig signingConfigs.release
+		}
+	}
+	productFlavors {
+	}
+}
+
+dependencies {
+	compile 'com.android.support:support-v4:18.0.0'
+	compile 'org.bytedeco:javacv:1.1'
+}
